@@ -2,6 +2,8 @@ from pypmml import Model
 import streamlit as st
 
 st.title("Predict Income")
+st.write("Predecir el ingreso de una persona segun sus caracteristicas")
+st.write("By @johanValerioMitma")
 st.image("income-logo.png", use_column_width=True)
 model=Model.load("xgboost-model.pmml")
 data={}
@@ -32,3 +34,4 @@ if st.button("Predecir Ingreso"):
     
 else:
     st.warning("Ningun dato predecido")
+
