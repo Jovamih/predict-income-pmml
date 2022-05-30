@@ -1,0 +1,2 @@
+streamlit==0.87.0
+pypmml==0.9.16
