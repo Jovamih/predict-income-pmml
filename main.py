@@ -25,13 +25,12 @@ data['hours-per-week']=float(st.text_input("Horas por semana",45))
 #model.inputNames=["age","worclass","fnlwgt","education-num","marital-status","occupation","relationship","race","sex","capital-gain","capital-loss","hours-per-week"]
 if st.button("Predecir Ingreso"):
     response=model.predict(data)
-    if response['P (<=50K)']>response['P (>50K)']:
-        st.success("Ingreso inferior a 50K")
-        st.write(f"Probabilidad: {round(response['P (<=50K)']*100,2)}%")
-    else:
-        st.success("Ingreso superior a 50K")
-        st.write(f"Probabilidad: {round(response['P (>50K)']*100,2)}%")
-    
+    col1,col2=st.columns(2)
+    with col1:
+        st.success(f"Ingreso inferior a 50K\n: {round(response['P (<=50K)']*100,2)}%")
+        
+    with col2:
+        st.error(f"Ingreso superior a 50K:\n {round(response['P (>50K)']*100,2)}%")
 else:
     st.warning("Ningun dato predecido")
 
